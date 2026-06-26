@@ -1,6 +1,6 @@
 [build]
   base = "artifacts/champion-skills"
-  command = "cd ../.. && corepack enable && pnpm install --frozen-lockfile=false && pnpm --filter @workspace/champion-skills run build"
+  command = "cd ../.. && npx --yes pnpm install --frozen-lockfile=false && npx --yes pnpm --filter @workspace/champion-skills run build"
   publish = "artifacts/champion-skills/dist/public"
 
 [build.environment]
