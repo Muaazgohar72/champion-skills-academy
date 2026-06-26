@@ -5,8 +5,8 @@ services:
     plan: free
     region: oregon
     rootDir: artifacts/api-server
-   buildCommand: cd ../.. && npx --yes pnpm install --frozen-lockfile=false && npx --yes pnpm --filter @workspace/api-server run build
-startCommand: npx --yes pnpm --filter @workspace/api-server run start
+    buildCommand: cd ../.. && npx --yes pnpm install --frozen-lockfile=false && npx --yes pnpm --filter @workspace/api-server run build
+    startCommand: npx --yes pnpm --filter @workspace/api-server run start
     envVars:
       - key: NODE_ENV
         value: production
