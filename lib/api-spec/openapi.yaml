@@ -1,0 +1,589 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: Champion Skills Academy API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: registrations
+    description: Player registration operations
+  - name: admin
+    description: Admin operations
+  - name: contact
+    description: Contact form operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /registrations:
+    post:
+      operationId: submitRegistration
+      tags: [registrations]
+      summary: Submit player registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationInput"
+      responses:
+        "201":
+          description: Registration submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Registration"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    get:
+      operationId: listRegistrations
+      tags: [admin]
+      summary: List all registrations (admin only)
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of registrations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Registration"
+        "401":
+          description: Unauthorized
+
+  /registrations/{id}:
+    get:
+      operationId: getRegistration
+      tags: [admin]
+      summary: Get a single registration (admin only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Registration details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Registration"
+        "404":
+          description: Not found
+    delete:
+      operationId: deleteRegistration
+      tags: [admin]
+      summary: Delete a registration (admin only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+        "404":
+          description: Not found
+
+  /admin/login:
+    post:
+      operationId: adminLogin
+      tags: [admin]
+      summary: Admin login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminLoginInput"
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminAuthResult"
+        "401":
+          description: Invalid credentials
+
+  /admin/me:
+    get:
+      operationId: getAdminMe
+      tags: [admin]
+      summary: Check admin session
+      responses:
+        "200":
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminMe"
+        "401":
+          description: Not authenticated
+
+  /admin/logout:
+    post:
+      operationId: adminLogout
+      tags: [admin]
+      summary: Admin logout
+      responses:
+        "200":
+          description: Logged out
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+
+  /admin/stats:
+    get:
+      operationId: getStats
+      tags: [admin]
+      summary: Get registration statistics
+      responses:
+        "200":
+          description: Statistics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationStats"
+
+  /contact:
+    post:
+      operationId: submitContact
+      tags: [contact]
+      summary: Submit contact message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInput"
+      responses:
+        "201":
+          description: Message sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+        "400":
+          description: Validation error
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    DeleteResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required:
+        - success
+        - message
+
+    AdminLoginInput:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+        - password
+
+    AdminAuthResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required:
+        - success
+        - message
+
+    AdminMe:
+      type: object
+      properties:
+        authenticated:
+          type: boolean
+      required:
+        - authenticated
+
+    RegistrationStats:
+      type: object
+      properties:
+        total:
+          type: integer
+        thisMonth:
+          type: integer
+        thisWeek:
+          type: integer
+        byGender:
+          type: object
+          properties:
+            male:
+              type: integer
+            female:
+              type: integer
+          required:
+            - male
+            - female
+      required:
+        - total
+        - thisMonth
+        - thisWeek
+        - byGender
+
+    ContactInput:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        message:
+          type: string
+      required:
+        - name
+        - email
+        - message
+
+    RegistrationInput:
+      type: object
+      properties:
+        # Player Information
+        playerFirstName:
+          type: string
+        playerLastName:
+          type: string
+        dateOfBirth:
+          type: string
+        age:
+          type: integer
+        gender:
+          type: string
+          enum: [male, female]
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        school:
+          type: string
+        grade:
+          type: string
+        shirtSize:
+          type: string
+          enum: [YS, YM, YL, AS, AM, AL, AXL]
+        # Parent / Guardian
+        parentName:
+          type: string
+        parentRelationship:
+          type: string
+        parentPhone:
+          type: string
+        parentEmail:
+          type: string
+        # How did you hear about us
+        hearAboutUs:
+          type: string
+        # Emergency Contacts
+        emergencyContact1Name:
+          type: string
+        emergencyContact1Relationship:
+          type: string
+        emergencyContact1Phone:
+          type: string
+        emergencyContact2Name:
+          type: ["string", "null"]
+        emergencyContact2Relationship:
+          type: ["string", "null"]
+        emergencyContact2Phone:
+          type: ["string", "null"]
+        # Medical Information
+        hasMedicalConditions:
+          type: boolean
+        medicalConditionsExplain:
+          type: ["string", "null"]
+        takesMedication:
+          type: boolean
+        medicationList:
+          type: ["string", "null"]
+        allergies:
+          type: ["string", "null"]
+        medicalNotes:
+          type: ["string", "null"]
+        # Liability Waiver
+        liabilityAgreed:
+          type: boolean
+        liabilitySignature:
+          type: string
+        liabilityDate:
+          type: string
+        # Attendance Agreement
+        attendanceAgreed:
+          type: boolean
+        attendanceSignature:
+          type: string
+        attendanceDate:
+          type: string
+        # Parent Code of Conduct
+        parentConductAgreed:
+          type: boolean
+        parentConductSignature:
+          type: string
+        parentConductDate:
+          type: string
+        # Player Code of Conduct
+        playerConductAgreed:
+          type: boolean
+        playerConductSignature:
+          type: string
+        playerConductDate:
+          type: string
+        # Photo Release
+        photoReleaseGranted:
+          type: boolean
+        photoReleaseParentName:
+          type: string
+        photoReleaseSignature:
+          type: string
+        photoReleaseDate:
+          type: string
+      required:
+        - playerFirstName
+        - playerLastName
+        - dateOfBirth
+        - age
+        - gender
+        - address
+        - city
+        - state
+        - zip
+        - school
+        - grade
+        - shirtSize
+        - parentName
+        - parentRelationship
+        - parentPhone
+        - parentEmail
+        - hearAboutUs
+        - emergencyContact1Name
+        - emergencyContact1Relationship
+        - emergencyContact1Phone
+        - hasMedicalConditions
+        - takesMedication
+        - liabilityAgreed
+        - liabilitySignature
+        - liabilityDate
+        - attendanceAgreed
+        - attendanceSignature
+        - attendanceDate
+        - parentConductAgreed
+        - parentConductSignature
+        - parentConductDate
+        - playerConductAgreed
+        - playerConductSignature
+        - playerConductDate
+        - photoReleaseGranted
+        - photoReleaseParentName
+        - photoReleaseSignature
+        - photoReleaseDate
+
+    Registration:
+      type: object
+      properties:
+        id:
+          type: integer
+        playerFirstName:
+          type: string
+        playerLastName:
+          type: string
+        dateOfBirth:
+          type: string
+        age:
+          type: integer
+        gender:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        school:
+          type: string
+        grade:
+          type: string
+        shirtSize:
+          type: string
+        parentName:
+          type: string
+        parentRelationship:
+          type: string
+        parentPhone:
+          type: string
+        parentEmail:
+          type: string
+        hearAboutUs:
+          type: string
+        emergencyContact1Name:
+          type: string
+        emergencyContact1Relationship:
+          type: string
+        emergencyContact1Phone:
+          type: string
+        emergencyContact2Name:
+          type: ["string", "null"]
+        emergencyContact2Relationship:
+          type: ["string", "null"]
+        emergencyContact2Phone:
+          type: ["string", "null"]
+        hasMedicalConditions:
+          type: boolean
+        medicalConditionsExplain:
+          type: ["string", "null"]
+        takesMedication:
+          type: boolean
+        medicationList:
+          type: ["string", "null"]
+        allergies:
+          type: ["string", "null"]
+        medicalNotes:
+          type: ["string", "null"]
+        liabilityAgreed:
+          type: boolean
+        liabilitySignature:
+          type: string
+        liabilityDate:
+          type: string
+        attendanceAgreed:
+          type: boolean
+        attendanceSignature:
+          type: string
+        attendanceDate:
+          type: string
+        parentConductAgreed:
+          type: boolean
+        parentConductSignature:
+          type: string
+        parentConductDate:
+          type: string
+        playerConductAgreed:
+          type: boolean
+        playerConductSignature:
+          type: string
+        playerConductDate:
+          type: string
+        photoReleaseGranted:
+          type: boolean
+        photoReleaseParentName:
+          type: string
+        photoReleaseSignature:
+          type: string
+        photoReleaseDate:
+          type: string
+        createdAt:
+          type: string
+      required:
+        - id
+        - playerFirstName
+        - playerLastName
+        - dateOfBirth
+        - age
+        - gender
+        - address
+        - city
+        - state
+        - zip
+        - school
+        - grade
+        - shirtSize
+        - parentName
+        - parentRelationship
+        - parentPhone
+        - parentEmail
+        - hearAboutUs
+        - emergencyContact1Name
+        - emergencyContact1Relationship
+        - emergencyContact1Phone
+        - hasMedicalConditions
+        - takesMedication
+        - liabilityAgreed
+        - liabilitySignature
+        - liabilityDate
+        - attendanceAgreed
+        - attendanceSignature
+        - attendanceDate
+        - parentConductAgreed
+        - parentConductSignature
+        - parentConductDate
+        - playerConductAgreed
+        - playerConductSignature
+        - playerConductDate
+        - photoReleaseGranted
+        - photoReleaseParentName
+        - photoReleaseSignature
+        - photoReleaseDate
+        - createdAt

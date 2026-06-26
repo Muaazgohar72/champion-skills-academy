@@ -1,0 +1,637 @@
+# PROMPT FOR REPLIT AI
+
+Build a premium, modern, high-converting website for a USA soccer academy called **Champion Skills Academy**. The website must look like a professional sports brand similar to Nike Academy, MLS Next, or elite soccer training academies.
+
+## IMPORTANT
+
+I will upload a real photo of the head coach.
+
+**DO NOT generate an AI face.**
+
+Use the uploaded image exactly as provided.
+Do not change his facial expression, face shape, smile, beard, hairstyle, or skin tone.
+
+Only remove the background if needed and place him naturally throughout the website.
+
+---
+
+# Coach Information
+
+Head Coach:
+**Andi Modrica**
+
+Phone:
+**(413) 579-2721**
+
+Location:
+**Springfield, Massachusetts**
+
+---
+
+# Website Style
+
+I want a very premium USA-style sports website.
+
+Dark theme with modern animations.
+
+Colors MUST match my brochure exactly.
+
+Primary Colors
+
+Black (#0B0B0B)
+
+Purple (#6A1BFF)
+
+White (#FFFFFF)
+
+Light Gray (#F5F5F5)
+
+Use glowing purple effects.
+
+Glassmorphism.
+
+Modern cards.
+
+Smooth scrolling.
+
+Parallax sections.
+
+Hover animations.
+
+Premium buttons.
+
+Rounded corners.
+
+Professional typography.
+
+Fast loading.
+
+Fully Responsive.
+
+SEO Optimized.
+
+Accessibility optimized.
+
+---
+
+# Technology
+
+Use
+
+Next.js
+
+React
+
+Tailwind CSS
+
+Framer Motion
+
+React Icons
+
+EmailJS (or Nodemailer)
+
+React Hook Form
+
+Zod Validation
+
+Google Maps Embed
+
+Swiper.js
+
+Lazy Loading
+
+Image Optimization
+
+Schema Markup
+
+Meta Tags
+
+---
+
+# Hero Section
+
+Large full-screen hero.
+
+Background:
+Soccer stadium with purple lighting.
+
+Overlay:
+Dark gradient.
+
+Show Coach image on right.
+
+Left side:
+
+Champion Skills Academy Logo
+
+Headline
+
+Develop Skills.
+Build Character.
+Become a Champion.
+
+Subheadline
+
+Professional Soccer Training Program for Kids in Springfield, MA.
+
+Buttons
+
+Register Now
+
+Call Coach
+
+Phone floating button.
+
+Animated scroll indicator.
+
+---
+
+# Trust Section
+
+Show counters
+
+✅ 20+ Players Registered
+
+🔥 30 Registrations In Progress
+
+⭐ Professional Coaching
+
+🏆 Skill Development
+
+Animate numbers.
+
+---
+
+# About Coach
+
+Large coach photo.
+
+Title
+
+Meet Head Coach Andi Modrica
+
+Write a professional USA-style bio.
+
+Mention
+
+Experienced coach
+
+Passionate mentor
+
+Develops confidence
+
+Improves technical skills
+
+Builds discipline
+
+Creates future champions
+
+---
+
+# Program Information
+
+Program Ages
+
+7–9 Years Old
+
+Season
+
+July – September
+
+Practice Day
+
+Wednesday
+
+Practice Time
+
+6:00 PM – 7:30 PM
+
+Location
+
+Springfield, MA
+
+Price
+
+$50 / Month
+
+Three Month Program
+
+---
+
+# Why Choose Us
+
+Cards with icons
+
+Technical Skills
+
+Confidence
+
+Ball Control
+
+Passing
+
+Shooting
+
+Dribbling
+
+Fitness
+
+Character
+
+Teamwork
+
+Leadership
+
+Discipline
+
+Friendship
+
+---
+
+# Registration Section
+
+Convert EVERY brochure form into online forms.
+
+Collect ALL information.
+
+Do not miss any field.
+
+---
+
+## Player Information
+
+First Name
+
+Last Name
+
+Date of Birth
+
+Age
+
+Gender
+
+Male
+
+Female
+
+Address
+
+City
+
+State
+
+ZIP
+
+School
+
+Grade
+
+Shirt Size
+
+YS
+
+YM
+
+YL
+
+AS
+
+AM
+
+AL
+
+AXL
+
+---
+
+## Parent / Guardian
+
+Parent Name
+
+Relationship
+
+Phone
+
+Email
+
+---
+
+## How did you hear about us?
+
+Facebook
+
+Instagram
+
+Friend
+
+Other
+
+---
+
+# Emergency Contact
+
+Emergency Contact 1
+
+Relationship
+
+Phone
+
+Emergency Contact 2
+
+Relationship
+
+Phone
+
+---
+
+# Medical Information
+
+Medical Conditions?
+
+Yes / No
+
+Explain
+
+Taking Medication?
+
+Yes / No
+
+Medication List
+
+Allergies
+
+Additional Notes
+
+---
+
+# Liability Waiver
+
+Create digital waiver.
+
+Checkbox
+
+"I agree"
+
+Digital Signature
+
+Typed Name
+
+Date
+
+---
+
+# Attendance Agreement
+
+Checkbox
+
+I understand consistent attendance is expected.
+
+Signature
+
+Date
+
+---
+
+# Parent Code of Conduct
+
+Create checkboxes
+
+Encourage and support all players
+
+Respect coaches
+
+Respect referees
+
+Positive language
+
+Allow coaches to coach
+
+Good sportsmanship
+
+Player development comes first
+
+Accept agreement
+
+Signature
+
+Date
+
+---
+
+# Player Code of Conduct
+
+Checkboxes
+
+Work hard
+
+Listen to coach
+
+Respect teammates
+
+Respect referees
+
+Be on time
+
+Care for equipment
+
+Positive attitude
+
+Signature
+
+Date
+
+---
+
+# Photo & Video Release
+
+Yes
+
+No
+
+Parent Name
+
+Signature
+
+Date
+
+---
+
+# Equipment Checklist
+
+Display checklist
+
+Soccer Cleats
+
+Shin Guards
+
+Soccer Ball Size 4
+
+Water Bottle
+
+Black Shorts
+
+Purple or Black Socks
+
+Practice Jersey
+
+Optional Sunscreen
+
+---
+
+# Practice Calendar
+
+Create beautiful calendar
+
+July
+
+August
+
+September
+
+Highlight Wednesdays.
+
+---
+
+# Contact Section
+
+Coach Photo
+
+Phone
+
+(413) 579-2721
+
+Location
+
+Springfield, MA
+
+Contact Form
+
+Google Map
+
+Call Button
+
+Email Button
+
+Directions Button
+
+---
+
+# Footer
+
+Champion Skills Academy
+
+Developing Skills
+
+Building Character
+
+Inspiring Champions
+
+Quick Links
+
+Privacy Policy
+
+Terms
+
+Facebook
+
+Instagram
+
+TikTok
+
+---
+
+# Email Functionality
+
+VERY IMPORTANT
+
+Every submitted form MUST automatically send all collected data to a specified email address.
+
+Use secure backend API.
+
+Validate every field.
+
+Show success animation.
+
+Show error handling.
+
+Prevent spam.
+
+Store submissions in a database.
+
+Also create an Admin Dashboard.
+
+---
+
+# Admin Dashboard
+
+Password Protected
+
+View Registrations
+
+View Emergency Information
+
+View Medical Information
+
+Search Players
+
+Download CSV
+
+Print Registration
+
+Delete Registration
+
+Filter by Date
+
+---
+
+# Performance
+
+95+ Lighthouse Score
+
+SEO Optimized
+
+Fast Loading
+
+Image Optimization
+
+Responsive
+
+Accessibility
+
+Schema Markup
+
+---
+
+# Animations
+
+Fade In
+
+Slide Up
+
+Glow Effects
+
+Button Hover
+
+Card Hover
+
+Image Zoom
+
+Counter Animation
+
+Smooth Scroll
+
+Loading Screen
+
+Page Transitions
+
+---
+
+# Final Goal
+
+The website should look like a **$10,000+ premium sports academy website** built by a professional USA web design agency.
+
+It should be visually stunning, trustworthy, modern, and designed to maximize registrations.
+
+Every form from the brochure must be converted into a digital version, and every submission must be emailed to the specified email address, stored in the database, and visible in the admin dashboard.
+
+The coach photo I upload must be used exactly as provided without altering his face or expression.

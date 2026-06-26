@@ -1,0 +1,13 @@
+[build]
+  base = "artifacts/champion-skills"
+  command = "cd ../.. && corepack enable && pnpm install --frozen-lockfile=false && pnpm --filter @workspace/champion-skills run build"
+  publish = "artifacts/champion-skills/dist/public"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# SPA fallback (also written into public/_redirects, kept here as a backup)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
