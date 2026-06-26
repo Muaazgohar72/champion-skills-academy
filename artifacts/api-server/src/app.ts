@@ -13,6 +13,12 @@ declare module "express" {
 
 const app: Express = express();
 
+// Render (and most PaaS hosts) terminate HTTPS at a proxy/load balancer and
+// forward plain HTTP internally. Without this, Express thinks every request
+// is insecure HTTP, which makes cookie-session's `secure: true` option
+// silently refuse to set the session cookie in production.
+app.set("trust proxy", 1);
+
 app.use(
   pinoHttp({
     logger,
