@@ -23,7 +23,12 @@ router.post("/login", async (req: Request, res: Response) => {
     return;
   }
 
-  req.session = { isAdmin: true };
+  if (!req.session) {
+    res.status(500).json({ error: "Session not available" });
+    return;
+  }
+
+  req.session.isAdmin = true;
   res.json({ success: true, message: "Logged in successfully" });
 });
 
