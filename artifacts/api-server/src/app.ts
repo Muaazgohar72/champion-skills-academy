@@ -41,7 +41,10 @@ app.use(
 
 // Comma-separated list of allowed frontend origins, e.g.
 // "https://championskillsacademy.netlify.app,http://localhost:5173"
-const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? "https://championskillsacademy.netlify.app")
+const allowedOrigins = (
+  process.env.ALLOWED_ORIGINS ??
+  "https://championskillacademy.com,https://www.championskillacademy.com,https://championskillsacademy.netlify.app"
+)
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
